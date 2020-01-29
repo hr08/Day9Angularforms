@@ -1,0 +1,44 @@
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+    <table cellspacing="5">
+      <tr>
+        <td>
+          <input placeholder="Id" formControlName="id" required>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input placeholder="Name" formControlName="name" required>
+          <p *ngIf="loginForm.controls.name.errors?.required">Name is required</p>
+          <p *ngIf="loginForm.controls.name.errors?.pattern">Enter a valid name</p>
+        </td>
+      </tr>
+  
+      <tr>
+        <td>
+          <input placeholder="MobileNo" formControlName="mobileno" required>
+          <p *ngIf="loginForm.controls.mobileno.errors?.required">Mobile no is required</p>
+          <p *ngIf="loginForm.controls.mobileno.errors?.maxlength">Maximum length should be 10</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input placeholder="Email" formControlName="email" required>
+           <p *ngIf="loginForm.controls.email.errors?.required">Email is required</p>
+           <p *ngIf="loginForm.controls.email.errors?.pattern">Enter a valid email</p>
+           <span *ngIf="loginForm.controls.email.errors?.email">InValidEmail</span>
+        </td>
+      </tr>
+  
+      <tr>
+        <td>
+          <input placeholder="Password" formControlName="password" type="password" required>
+          <p *ngIf="loginForm.controls.password.errors?.required">Password required</p>
+          <p *ngIf="loginForm.controls.password.errors?.pattern">Password is weak</p>
+  
+        </td>
+      </tr>
+    </table>
+    <button type="submit">Register</button>
+  </form>
